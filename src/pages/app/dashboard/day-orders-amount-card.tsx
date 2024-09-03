@@ -21,11 +21,26 @@ export function DayOrdersAmountCard() {
           {dayOrdersAmout && (
             <>
               <span className="text-2xl font-bold tracking-tight">
-                {/* {dayOrdersAmout.amount.toLocaleString('ptBR')} nao acabei */}
+                {dayOrdersAmout.amount.toLocaleString('pt-BR')}
               </span>
               <p className="text-xs text-muted-foreground">
-                <span className="text-rose-500 dark:text-rose-400">-1%</span> em
-                relação a ontem
+                {dayOrdersAmout.diffFromYesterday >= 0 ? (
+                  <>
+                    <span className="text-emerald-500 dark:text-emerald-400">
+                      +{dayOrdersAmout.diffFromYesterday}%{' '}
+                    </span>
+                    em relação a ontem
+                  </>
+                ) : (
+                  <>
+                    <span className="text-rose-500 dark:text-rose-400">
+                      +{dayOrdersAmout.diffFromYesterday}-
+                      {dayOrdersAmout.diffFromYesterday}%{' '}
+                    </span>
+                    em relação a ontem
+                  </>
+                )}
+                em relação a ontem
               </p>
             </>
           )}
